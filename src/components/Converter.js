@@ -88,29 +88,40 @@ const Converter = () => {
 
   return (
     <div className="converterContainer">
-      <form class="converterForm" onSubmit={onFormSubmit}>
-        <input
-          type="number"
-          id="amount"
-          name="amount"
-          placeholder=""
-          min="1"
-          value={amount}
-          onChange={(e) => {
-            setAmount(e.target.value);
-          }}
-        ></input>
-        <label htmlFor="currencyFrom">From:</label>
-        <select
-          name="currencyFrom"
-          id="currencyChoiceFrom"
-          value={currencyFrom}
-          onChange={(e) => {
-            setCurrencyFrom(e.target.value);
-          }}
-        >
-          {options}
-        </select>
+      <form className="converterForm" onSubmit={onFormSubmit}>
+        <div className="formRow">
+          <label className="formLabel" htmlFor="amount">
+            Amount:
+          </label>
+          <input
+            type="number"
+            id="amount"
+            name="amount"
+            placeholder=""
+            min="1"
+            value={amount}
+            onChange={(e) => {
+              setAmount(e.target.value);
+            }}
+            className="converterField"
+          />
+        </div>
+        <div className="formRow">
+          <label className="formLabel" htmlFor="currencyFrom">
+            From:
+          </label>
+          <select
+            name="currencyFrom"
+            id="currencyChoiceFrom"
+            className="converterField"
+            value={currencyFrom}
+            onChange={(e) => {
+              setCurrencyFrom(e.target.value);
+            }}
+          >
+            {options}
+          </select>
+        </div>
         <button
           onClick={() => {
             onCurrencySwitch();
@@ -119,20 +130,24 @@ const Converter = () => {
         >
           Switch
         </button>
-        <label htmlFor="currencyTo">To:</label>
-        <select
-          name="currencyTo"
-          id="currencyChoiceTo"
-          value={currencyTo}
-          onChange={(e) => {
-            setCurrencyTo(e.target.value);
-          }}
-        >
-          {options}
-        </select>
-        <input type="submit" value="Submit"></input>
+        <div className="formRow">
+          <label className="formLabel" htmlFor="currencyTo">
+            To:
+          </label>
+          <select
+            name="currencyTo"
+            id="currencyChoiceTo"
+            className="converterField"
+            value={currencyTo}
+            onChange={(e) => {
+              setCurrencyTo(e.target.value);
+            }}
+          >
+            {options}
+          </select>
+        </div>
+        <input id="submitButton" type="submit" value="Submit" />
       </form>
-      <ReactCountryFlag countryCode="US" />
     </div>
   );
 };

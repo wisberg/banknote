@@ -1,8 +1,63 @@
+.converterContainer {
+  display: flex;
+  align-items: center;
+}
+
 .converterForm {
-  background-color: var(--blue);
-  min-height: 30vh;
   display: flex;
   flex-direction: row;
   align-items: center;
-  vertical-align: center;
+  width: 300px;
+}
+
+.formRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.formLabel {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.converterField {
+  width: 100%;
+  padding: 5px;
+}
+
+.switchButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: --var(blue);
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+#submitButton {
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#submitButton:hover {
+  background-color: #45a049;
+}
+
+.converterField {
+  min-width: 300px;
+  height: 30px;
+}
+label,
+option {
+  display: flex;
+  flex-direction: column !important;
 }
