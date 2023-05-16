@@ -15,11 +15,11 @@ const Landing = () => {
         alt="Cartoon of Coins"
       />
       <div className="landing-headers-container">
-        <h1 id="landing-header">BankNote</h1>
+        <h1 id="landing-header">Instant currency conversion and information</h1>
         <h2 className="landing-tagline">
-          Your go-to app for quick currency conversions.
+          Your go-to app for quick currency conversions, currency news, and
+          more.
         </h2>
-        <h2 className="landing-tagline">Convert any currency, instantly.</h2>
         <button id="landing-button" className="getStarted">
           Get Started
         </button>

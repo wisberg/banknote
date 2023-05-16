@@ -1,14 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  max-width: 100%; 
-  overflow-x: hidden; 
+  font-family: "Ubuntu", sans-serif;
+  letter-spacing: -1px;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: var(--blue);
 }
 
 :root {
-  --blue: #6D98BA;
+  --blue: #6d98ba;
   --white: #f9f9f9;
-  --black: #070707; 
-  --accentRed: #FF595E; 
+  --black: #070707;
+  --accentRed: #ff595e;
 }

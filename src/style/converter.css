@@ -1,63 +1,95 @@
 .converterContainer {
+  width: 80%;
+  height: 30vh;
+  background-color: white;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  vertical-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 2%;
+  border-radius: 10px;
 }
 
 .converterForm {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  width: 300px;
+  vertical-align: middle;
+  justify-self: center;
 }
 
 .formRow {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: start;
   margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 .formLabel {
   font-weight: bold;
   margin-right: 10px;
+  font-size: 18px;
 }
 
 .converterField {
   width: 100%;
-  padding: 5px;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .switchButton {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background-color: --var(blue);
+  background-color: var(--blue) !important;
   margin-bottom: 10px;
   cursor: pointer;
+  border: none;
+  outline: none;
+}
+#switchButtonIcon {
+  color: white;
+  height: 30px;
+  width: 30px;
 }
 
 #submitButton {
-  padding: 10px;
-  margin-top: 10px;
-  background-color: #4caf50;
-  color: white;
+  font-weight: 900;
+  font-size: 15px;
+  background-color: var(--blue);
+  color: var(--white);
   border: none;
+  outline: none;
+  border-radius: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  max-height: 40px;
+  transition: 0.3s;
   cursor: pointer;
 }
 
 #submitButton:hover {
-  background-color: #45a049;
+  background-color: var(--white);
+  color: var(--blue);
+  transition: 0.3s;
 }
 
-.converterField {
-  min-width: 300px;
-  height: 30px;
-}
-label,
-option {
-  display: flex;
-  flex-direction: column !important;
+.disclaimerText {
+  font-size: 13px;
+  font-weight: 300;
+  justify-self: start;
 }

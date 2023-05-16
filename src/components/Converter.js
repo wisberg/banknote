@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../style/converter.css";
 import axios from "axios";
 import ReactCountryFlag from "react-country-flag";
+import { IoMdSwap, IoIosInformationCircleOutline } from "react-icons/io";
 
 const Converter = () => {
   const [currencyList, setCurrencyList] = useState({ symbols: {} });
@@ -60,6 +61,8 @@ const Converter = () => {
       )
     );
     setOptions(newOptions);
+    setCurrencyFrom(currencyList[Object.keys(currencyList)[0]]);
+    setCurrencyTo(currencyList[Object.keys(currencyList)[1]]);
   };
 
   useEffect(() => {
@@ -128,7 +131,7 @@ const Converter = () => {
           }}
           className="switchButton"
         >
-          Switch
+          <IoMdSwap id="switchButtonIcon" />
         </button>
         <div className="formRow">
           <label className="formLabel" htmlFor="currencyTo">
@@ -148,6 +151,16 @@ const Converter = () => {
         </div>
         <input id="submitButton" type="submit" value="Submit" />
       </form>
+      <div className="disclaimer">
+        <p className="disclaimerText">
+          <IoIosInformationCircleOutline className="infoIcon" />
+          We use the{" "}
+          <a href="https://rapidapi.com/fyhao/api/currency-exchange/details">
+            Currency Rate API
+          </a>{" "}
+          for our Converter. This is for informational purposes only.
+        </p>
+      </div>
     </div>
   );
 };
