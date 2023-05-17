@@ -1,5 +1,6 @@
 import React from "react";
 import "../style/header.css";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   window.addEventListener("scroll", function () {
@@ -26,10 +27,63 @@ const Header = () => {
       <h1 className="header-logo">BankNote</h1>
       <div className="links">
         <ul className="header-link-list">
-          <li>Curency Exchange</li>
-          <li>Currency Lookup</li>
-          <li>Find a Currency</li>
-          <li>Contact</li>
+          <li>
+            <NavLink
+              to="/"
+              style={({ isActive, isPending }) => {
+                return {
+                  color: isActive ? "lightgray" : "inherit",
+                };
+              }}
+              className={({ isActive, isPending }) => {
+                return isActive
+                  ? "headerLinks active"
+                  : isPending
+                  ? "headerLinks pending"
+                  : "headerLinks";
+              }}
+            >
+              Currency Exchange{" "}
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/news"
+              style={({ isActive, isPending }) => {
+                return {
+                  color: isActive ? "lightgray" : "inherit",
+                };
+              }}
+              className={({ isActive, isPending }) => {
+                return isActive
+                  ? "headerLinks active"
+                  : isPending
+                  ? "headerLinks pending"
+                  : "headerLinks";
+              }}
+            >
+              Currency News
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/contact"
+              style={({ isActive, isPending }) => {
+                return {
+                  color: isActive ? "lightgray" : "inherit",
+                };
+              }}
+              className={({ isActive, isPending }) => {
+                return isActive
+                  ? "headerLinks active"
+                  : isPending
+                  ? "headerLinks pending"
+                  : "headerLinks";
+              }}
+            >
+              Contact
+            </NavLink>
+          </li>
         </ul>
         <button className="getStartedHeader">Get Started</button>
       </div>

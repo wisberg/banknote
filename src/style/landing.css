@@ -1,15 +1,17 @@
 .landing-container {
-  min-height: 100vh;
+  min-height: 76vh;
   display: flex;
   flex-direction: column;
   padding-top: 5%;
+  background-color: var(--blue);
+  z-index: 0;
 }
 
 #BankNote-Img-1 {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: 1;
   width: 550px;
   margin-left: -250px;
   margin-top: -50px;
@@ -18,7 +20,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  z-index: -1;
+  z-index: 1;
   max-width: 400px;
   margin-bottom: 100px;
   margin-right: -150px;
@@ -54,29 +56,20 @@
   font-weight: 300;
 }
 
-#landing-button {
-  margin-top: 30px;
-  font-size: 25px;
-  padding-left: 60px;
-  padding-right: 60px;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  line-height: 0;
-}
 .getStarted {
-  font-weight: 900;
-  font-size: 15px;
+  font-weight: 700;
+  font-size: 18px;
   background-color: transparent;
-  color: var(--white);
+  color: white;
   border: 1px solid white;
   outline: none;
   border-radius: 5px;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  max-height: 40px;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   transition: 0.3s;
+  margin-top: 40px;
 }
 
 .getStarted:hover {
@@ -84,4 +77,8 @@
   background-color: var(--white);
   transition: 0.3s;
   cursor: pointer;
+}
+
+.wavyTransition {
+  background-color: white;
 }

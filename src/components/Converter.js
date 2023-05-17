@@ -11,6 +11,8 @@ const Converter = () => {
   const [currencyFrom, setCurrencyFrom] = useState("");
   const [currencyTo, setCurrencyTo] = useState("");
 
+  console.log(process.env.REACT_APP_API_KEY);
+
   //   useEffect(() => {
   //     const options = {
   //       method: 'GET',

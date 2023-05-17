@@ -1,1 +1,1 @@
-Portfolio project using React called BankNote, a currency converter website. Using images from Midjourney.
+Portfolio project using React called BankNote, a currency converter & news website. Using images from Midjourney, Axios for API calls, etc.
