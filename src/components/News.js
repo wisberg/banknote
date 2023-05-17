@@ -5,28 +5,98 @@ import "../style/news.css";
 const News = () => {
   const [articles, setArticles] = useState([]);
   const [query, setQuery] = useState("currency");
+  const [loading, setLoading] = useState(false);
+  const [cancelToken, setCancelToken] = useState(null);
+
+  // useEffect(() => {
+  //   const source = axios.CancelToken.source();
+  //   setCancelToken(source);
+
+  //   const fetchData = async () => {
+  //     setLoading(true);
+  //     setArticles([]);
+
+  //     try {
+  //       const response = await axios.get(
+  //         `https://newsapi.org/v2/everything?q=${query}&pageSize=12`,
+  //         {
+  //           headers: {
+  //             "X-Api-Key": `${process.env.REACT_APP_NEWS_API_KEY}`,
+  //           },
+  //           cancelToken: source.token,
+  //         }
+  //       );
+
+  //       console.log(response.data);
+  //       setArticles(response.data.articles);
+  //     } catch (error) {
+  //       if (axios.isCancel(error)) {
+  //         console.log("Request canceled:", error.message);
+  //       } else {
+  //         console.error(error);
+  //       }
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchData();
+  //   return () => {
+  //     source.cancel("Request canceled: Component unmounted");
+  //   };
+  // }, [query]);
 
   useEffect(() => {
-    const options = {
-      method: "GET",
-      url: `https://newsapi.org/v2/everything?q=${query}`,
-      headers: {
-        "X-Api-Key": `${process.env.REACT_APP_NEWS_API_KEY}`,
+    setArticles([
+      {
+        author: "https://www.facebook.com/bbcnews",
+        content:
+          "After spending 10 years as a Buddhist nun in Myanmar, Coral Sunone realised that she needed some fashion help when she returned to the outside world.\r\nBut with money tight, getting assistance from a … [+5562 chars]",
+        description:
+          'So-called "time-banking" schemes are letting people get paid in time credits for the work they do.',
+        publishedAt: "2023-05-01T00:41:46Z",
+        source: { id: "bbc-news", name: "BBC News" },
+        title: "The people turning time into a currency",
+        url: "https://www.bbc.co.uk/news/business-65397192",
+        urlToImage:
+          "https://ichef.bbci.co.uk/news/1024/branded_news/AF47/production/_129517844_coralnew4.jpg",
       },
-    };
+      {
+        author: "https://www.facebook.com/bbcnews",
+        content:
+          "After spending 10 years as a Buddhist nun in Myanmar, Coral Sunone realised that she needed some fashion help when she returned to the outside world.\r\nBut with money tight, getting assistance from a … [+5562 chars]",
+        description:
+          'So-called "time-banking" schemes are letting people get paid in time credits for the work they do.',
+        publishedAt: "2023-05-01T00:41:46Z",
+        source: { id: "bbc-news", name: "BBC News" },
+        title: "The people turning time into a currency",
+        url: "https://www.bbc.co.uk/news/business-65397192",
+        urlToImage:
+          "https://ichef.bbci.co.uk/news/1024/branded_news/AF47/production/_129517844_coralnew4.jpg",
+      },
+      {
+        author: "https://www.facebook.com/bbcnews",
+        content:
+          "After spending 10 years as a Buddhist nun in Myanmar, Coral Sunone realised that she needed some fashion help when she returned to the outside world.\r\nBut with money tight, getting assistance from a … [+5562 chars]",
+        description:
+          'So-called "time-banking" schemes are letting people get paid in time credits for the work they do.',
+        publishedAt: "2023-05-01T00:41:46Z",
+        source: { id: "bbc-news", name: "BBC News" },
+        title: "The people turning time into a currency",
+        url: "https://www.bbc.co.uk/news/business-65397192",
+        urlToImage:
+          "https://ichef.bbci.co.uk/news/1024/branded_news/AF47/production/_129517844_coralnew4.jpg",
+      },
+    ]);
+    console.log(query);
+  }, [query]);
 
-    const fetchData = async () => {
-      try {
-        const response = await axios.request(options);
-        console.log(response.data);
-        setArticles(response.data.articles);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const inputValue = e.target.elements.searchInput.value;
+    setQuery(inputValue);
+    e.target.reset();
+  };
 
   return (
     <div className="newsPage">
@@ -38,11 +108,43 @@ const News = () => {
         ></path>
       </svg>
       <h1 className="pageHeader">News</h1>
+      <div className="searchContainer">
+        <h1 className="searchText">Search News:</h1>
+        <div>
+          <button
+            className="searchButton"
+            value="crypto"
+            onClick={(e) => setQuery(e.target.value)}
+          >
+            Crypto
+          </button>
+          <button
+            className="searchButton"
+            value="fiat"
+            onClick={(e) => setQuery(e.target.value)}
+          >
+            Fiat
+          </button>
+          <button
+            className="searchButton"
+            value="USD"
+            onClick={(e) => setQuery(e.target.value)}
+          >
+            USD
+          </button>
+          <form onSubmit={handleFormSubmit}>
+            <input type="text" className="searchBar" id="searchInput" />
+            <button className="searchButton" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
       <div className="newsContainer">
         {articles.length > 0 ? (
           articles.map((article) =>
             article.urlToImage ? (
-              <div className="articleContainer" key={article.source.id}>
+              <div className="articleContainer" key={article.url}>
                 <img className="articleImg" src={article.urlToImage} />
                 <h1 className="articleTitle">{article.title}</h1>
                 <h2 className="articleAuthor">By: {article.author}</h2>
@@ -59,7 +161,23 @@ const News = () => {
             ) : null
           )
         ) : (
-          <div>Not found</div>
+          <>
+            {query === "" ? (
+              <h1>No Results. Please search again.</h1>
+            ) : (
+              <div className="newsContainer">
+                {[1, 2, 3].map((index) => (
+                  <div className="articleContainer" key={index}>
+                    <img className="articleImg loader" />
+                    <h1 className="articleTitle loader loader-text-title"></h1>
+                    <h2 className="articleAuthor loader loader-text"></h2>
+                    <h3 className="articleDesc loader loader-text"></h3>
+                    <a className="articleLink loader"></a>
+                  </div>
+                ))}
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
