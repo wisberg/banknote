@@ -100,6 +100,16 @@ const News = () => {
 
   return (
     <div className="newsPage">
+      <img
+        id="BankNote-Img-3"
+        src={require("../assets/BankNote_3Coins.png")}
+        alt="Cartoon of Coins"
+      />
+      <img
+        id="BankNote-Img-5"
+        src={require("../assets/BankNote_3Coins.png")}
+        alt="Cartoon of Coins"
+      />
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#6d98ba"

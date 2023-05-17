@@ -11,8 +11,6 @@ const Converter = () => {
   const [currencyFrom, setCurrencyFrom] = useState("");
   const [currencyTo, setCurrencyTo] = useState("");
 
-  console.log(process.env.REACT_APP_API_KEY);
-
   //   useEffect(() => {
   //     const options = {
   //       method: 'GET',
@@ -56,10 +54,12 @@ const Converter = () => {
   const createOptions = () => {
     const newOptions = Object.entries(currencyList.symbols).map(
       ([code, name]) => (
-        <option key={code} value={code}>
-          <ReactCountryFlag countryCode={code} />
-          {`${code} - ${name}`}
-        </option>
+        <>
+          <option key={code} value={code}>
+            <ReactCountryFlag countryCode={code} />
+            {`${code} - ${name}`}
+          </option>
+        </>
       )
     );
     setOptions(newOptions);
@@ -92,7 +92,7 @@ const Converter = () => {
   }
 
   return (
-    <div className="converterContainer">
+    <div id="converter" className="converterContainer">
       <form className="converterForm" onSubmit={onFormSubmit}>
         <div className="formRow">
           <label className="formLabel" htmlFor="amount">
@@ -157,7 +157,11 @@ const Converter = () => {
         <p className="disclaimerText">
           <IoIosInformationCircleOutline className="infoIcon" />
           We use the{" "}
-          <a href="https://rapidapi.com/fyhao/api/currency-exchange/details">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://rapidapi.com/fyhao/api/currency-exchange/details"
+          >
             Currency Rate API
           </a>{" "}
           for our Converter. This is for informational purposes only.

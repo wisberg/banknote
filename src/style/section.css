@@ -1,0 +1,55 @@
+.sectionContainer {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle;
+  height: 40vh;
+}
+
+.sectionImage {
+  width: 600px;
+  height: 400px;
+  object-fit: cover;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 10px;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  justify-self: center;
+  vertical-align: middle;
+  margin-left: 5%;
+  margin-top: 50px;
+}
+
+.sectionHeader {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.sectionBody {
+  padding-bottom: 40px;
+  font-weight: 300;
+  max-width: 80%;
+}
+
+.sectionLink {
+  text-decoration: none !important;
+  padding: 20px;
+  border: 1px solid var(--blue);
+  color: var(--blue);
+  border-radius: 5px;
+  transition: 0.3s;
+  max-width: 80%;
+}
+.sectionLink:hover {
+  background-color: var(--blue);
+  color: white;
+  border-radius: 1px;
+  transition: 0.3s;
+}

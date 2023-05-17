@@ -70,10 +70,11 @@
   padding-bottom: 20px;
   transition: 0.3s;
   margin-top: 40px;
+  text-decoration: none;
 }
 
 .getStarted:hover {
-  color: var(--black);
+  color: var(--blue);
   background-color: var(--white);
   transition: 0.3s;
   cursor: pointer;

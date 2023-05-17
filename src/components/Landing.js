@@ -20,7 +20,9 @@ const Landing = () => {
           Your go-to app for quick currency conversions, currency news, and
           more.
         </h2>
-        <button className="getStarted">Convert</button>
+        <a href="#converter" className="getStarted">
+          Convert
+        </a>
       </div>
       <div className="wavyTransition">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">

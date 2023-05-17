@@ -25,6 +25,8 @@
   padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 10px;
+  background-color: white;
+  z-index: 1;
 }
 .articleImg {
   width: 375px;
@@ -138,4 +140,19 @@
   100% {
     background-color: hsl(200, 20%, 95%);
   }
+}
+
+#BankNote-Img-3 {
+  position: absolute;
+  top: 500px;
+  left: -100px;
+  max-width: 450px;
+  z-index: -1;
+}
+#BankNote-Img-5 {
+  position: absolute;
+  top: 800px;
+  right: -100px;
+  max-width: 450px;
+  z-index: -1;
 }
