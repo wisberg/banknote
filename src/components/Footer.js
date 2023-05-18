@@ -1,5 +1,9 @@
 import React from "react";
 import "../style/footer.css";
+import { BsLinkedin } from "react-icons/bs";
+import { SiGithub } from "react-icons/si";
+import { HiOutlineDesktopComputer } from "react-icons/hi";
+import { Link, NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -18,8 +22,98 @@ const Footer = () => {
       <div className="footerContent">
         <div className="leftFooter">
           <h1 className="footerLogo">BankNote</h1>
+          <div className="socialContainer">
+            <a
+              href="https://linkedin.com/in/duffisberg"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <BsLinkedin className="socialIcon"></BsLinkedin>
+            </a>
+            <a
+              href="https://github.com/wisberg"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <SiGithub className="socialIcon" />
+            </a>
+            <a href="https://duffisberg.com" rel="noreferrer" target="_blank">
+              <HiOutlineDesktopComputer className="socialIcon" />
+            </a>
+          </div>
         </div>
-        <div className="rightFooter"></div>
+        <div className="rightFooter">
+          <div className="links">
+            <ul className="header-link-list">
+              <li>
+                <NavLink
+                  to="/"
+                  style={({ isActive, isPending }) => {
+                    return {
+                      color: isActive ? "lightgray" : "inherit",
+                    };
+                  }}
+                  className={({ isActive, isPending }) => {
+                    return isActive
+                      ? "headerLinksFooter active"
+                      : isPending
+                      ? "headerLinksFooter pending"
+                      : "headerLinksFooter";
+                  }}
+                >
+                  Currency Exchange{" "}
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/news"
+                  style={({ isActive, isPending }) => {
+                    return {
+                      color: isActive ? "lightgray" : "inherit",
+                    };
+                  }}
+                  className={({ isActive, isPending }) => {
+                    return isActive
+                      ? "headerLinksFooter active"
+                      : isPending
+                      ? "headerLinksFooter pending"
+                      : "headerLinksFooter";
+                  }}
+                >
+                  Currency News
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/contact"
+                  style={({ isActive, isPending }) => {
+                    return {
+                      color: isActive ? "lightgray" : "inherit",
+                    };
+                  }}
+                  className={({ isActive, isPending }) => {
+                    return isActive
+                      ? "headerLinksFooter active"
+                      : isPending
+                      ? "headerLinksFooter pending"
+                      : "headerLinksFooter";
+                  }}
+                >
+                  Contact
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div className="credits">
+        <p className="credits">
+          Portfolio Project by{" "}
+          <a href="https://duffisberg.com" target="_blank" link="noreferrer">
+            Duff Isberg
+          </a>{" "}
+          built with React.
+        </p>
       </div>
     </div>
   );

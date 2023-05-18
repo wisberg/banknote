@@ -1,13 +1,21 @@
 .footerContainer {
   width: 100%;
-  background-color: white;
+  background: rgba(255, 89, 94, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 89, 94, 0) 50%,
+    rgba(109, 152, 186, 1) 50%
+  );
+  margin: 0;
 }
 
 .footerContent {
-  width: 100%;
   background-color: var(--blue);
+  width: 100%;
   margin: 0;
-  padding: 200px;
+  padding: 100px;
+  display: flex;
+  flex-direction: row;
 }
 .footerLogo {
   font-size: 40px;
@@ -19,4 +27,35 @@
   margin: 0;
   padding: 0;
   margin-bottom: -21px;
+}
+.socialIcon {
+  color: white;
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+  object-fit: cover;
+  cursor: pointer;
+}
+.rightFooter {
+  margin-left: 40%;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.credits {
+  background-color: var(--blue);
+  color: white;
+  font-weight: 500;
+  font-size: 13px;
+  margin: 0;
+  padding: 10px;
+  margin-left: 35px;
+}
+.headerLinksFooter {
+  text-decoration: none !important;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
 }
