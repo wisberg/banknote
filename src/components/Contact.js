@@ -28,12 +28,6 @@ const Contact = () => {
       );
   };
 
-  console.log(
-    process.env.REACT_APP_EMAIL_SERVICE_ID,
-    process.env.REACT_APP_EMAIL_TEMPLATE,
-    process.env.REACT_APP_EMAIL_TEMPLATE
-  );
-
   return (
     <div className="contactPage">
       <img

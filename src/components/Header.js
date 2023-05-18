@@ -3,6 +3,23 @@ import "../style/header.css";
 import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
+  const handleNavLinkClick = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    }); // Scroll to the top of the page instantly
+  };
+  const handleGetStartedClick = () => {
+    // Wait for the navigation to complete before scrolling
+    setTimeout(() => {
+      const converterSection = document.getElementById("converter");
+      if (converterSection) {
+        converterSection.scrollIntoView({ behavior: "smooth" }); // Scroll to the converter section
+      }
+    }, 0);
+  };
+
   window.addEventListener("scroll", function () {
     var header = document.querySelector("header"); // Replace 'header' with your header element selector
     var headerLogo = document.getElementsByClassName("header-logo")[0];
@@ -30,6 +47,7 @@ const Header = () => {
           <li>
             <NavLink
               to="/"
+              onClick={handleNavLinkClick}
               style={({ isActive, isPending }) => {
                 return {
                   color: isActive ? "lightgray" : "inherit",
@@ -49,6 +67,7 @@ const Header = () => {
           <li>
             <NavLink
               to="/news"
+              onClick={handleNavLinkClick}
               style={({ isActive, isPending }) => {
                 return {
                   color: isActive ? "lightgray" : "inherit",
@@ -68,6 +87,7 @@ const Header = () => {
           <li>
             <NavLink
               to="/contact"
+              onClick={handleNavLinkClick}
               style={({ isActive, isPending }) => {
                 return {
                   color: isActive ? "lightgray" : "inherit",
@@ -85,7 +105,13 @@ const Header = () => {
             </NavLink>
           </li>
         </ul>
-        <button className="getStartedHeader">Get Started</button>
+        <Link
+          to="/#converter"
+          onClick={handleGetStartedClick}
+          className="getStartedHeader"
+        >
+          Get Started
+        </Link>
       </div>
     </header>
   );

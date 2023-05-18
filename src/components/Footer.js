@@ -6,6 +6,14 @@ import { HiOutlineDesktopComputer } from "react-icons/hi";
 import { Link, NavLink } from "react-router-dom";
 
 const Footer = () => {
+  const handleNavLinkClick = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    }); // Scroll to the top of the page on Link Click instantly
+  };
+
   return (
     <div className="footerContainer">
       <svg
@@ -48,6 +56,7 @@ const Footer = () => {
               <li>
                 <NavLink
                   to="/"
+                  onClick={handleNavLinkClick}
                   style={({ isActive, isPending }) => {
                     return {
                       color: isActive ? "lightgray" : "inherit",
@@ -67,6 +76,7 @@ const Footer = () => {
               <li>
                 <NavLink
                   to="/news"
+                  onClick={handleNavLinkClick}
                   style={({ isActive, isPending }) => {
                     return {
                       color: isActive ? "lightgray" : "inherit",
@@ -86,6 +96,7 @@ const Footer = () => {
               <li>
                 <NavLink
                   to="/contact"
+                  onClick={handleNavLinkClick}
                   style={({ isActive, isPending }) => {
                     return {
                       color: isActive ? "lightgray" : "inherit",

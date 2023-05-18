@@ -18,7 +18,7 @@
 }
 #BankNote-Img-2 {
   position: absolute;
-  bottom: 0;
+  top: 40%;
   right: 0;
   z-index: 1;
   max-width: 400px;
@@ -53,7 +53,6 @@
   padding-left: 100px;
   padding-right: 100px;
   color: white;
-  font-weight: 300;
 }
 
 .getStarted {
@@ -82,4 +81,77 @@
 
 .wavyTransition {
   background-color: white;
+}
+
+/************************TABLET*********************/
+@media (max-width: 768px) {
+  .landing-headers-container {
+    margin-top: -20px;
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+  #BankNote-Img-1 {
+    width: 300px;
+    margin-left: -150px;
+    margin-top: 50px;
+  }
+  #BankNote-Img-2 {
+    max-width: 200px;
+    margin-bottom: 200px;
+    margin-right: -50px;
+  }
+
+  #landing-header {
+    font-size: 45px;
+    padding-top: 50px;
+  }
+  .landing-tagline {
+    font-size: 20px;
+  }
+  .wavyTransition {
+    margin-top: 40px;
+  }
+  .getStarted {
+    font-size: 16px;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+}
+
+/************************SMALL SCREEN*********************/
+@media (max-width: 1025px) {
+  .landing-headers-container {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+  #BankNote-Img-1 {
+    width: 400px;
+    margin-left: -150px;
+    margin-top: 50px;
+  }
+  #BankNote-Img-2 {
+    max-width: 300px;
+    margin-bottom: 200px;
+    margin-right: -50px;
+  }
+
+  #landing-header {
+    font-size: 45px;
+    padding-top: 50px;
+  }
+  .landing-tagline {
+    font-size: 20px;
+  }
+  .wavyTransition {
+    margin-top: 40px;
+  }
+  .getStarted {
+    font-size: 16px;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
 }

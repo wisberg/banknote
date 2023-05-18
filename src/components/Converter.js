@@ -10,61 +10,71 @@ const Converter = () => {
   const [amount, setAmount] = useState("");
   const [currencyFrom, setCurrencyFrom] = useState("");
   const [currencyTo, setCurrencyTo] = useState("");
-
-  //   useEffect(() => {
-  //     const options = {
-  //       method: 'GET',
-  //       url: 'https://api.apilayer.com/exchangerates_data/symbols',
-  //       redirect: 'follow',
-  //       headers: {
-  //         'apikey': `${process.env.REACT_APP_API_KEY}`
-  //       }
-  //     };
-
-  //     const fetchData = async () => {
-  //       try {
-  //         const response = await axios.request(options);
-  //         console.log(response.data);
-  //         setCurrencyList(response.data);
-  //       } catch (error) {
-  //         console.error(error);
-  //       }
-  //     }
-
-  //     fetchData();
-  //   }, []);
+  const [conversionData, setConversionData] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [searched, setSearched] = useState(false);
 
   useEffect(() => {
-    setCurrencyList({
-      symbols: {
-        AED: "United Arab Emirates Dirham",
-        AFN: "Afghan Afghani",
-        ALL: "Albanian Lek",
-        AMD: "Armenian Dram",
-        ANG: "Netherlands Antillean Guilder",
-        AOA: "Angolan Kwanza",
-        ARS: "Argentine Peso",
-        AUD: "Australian Dollar",
-        AWG: "Aruban Florin",
-        AZN: "Azerbaijani Manat",
+    const options = {
+      method: "GET",
+      url: "https://api.apilayer.com/exchangerates_data/symbols",
+      redirect: "follow",
+      headers: {
+        apikey: `${process.env.REACT_APP_API_KEY}`,
       },
-    });
+    };
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.request(options);
+        console.log(response.data);
+        setCurrencyList(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
   }, []);
 
+  //Dummy Array
+  // useEffect(() => {
+  //   setCurrencyList({
+  //     symbols: {
+  //       AED: "United Arab Emirates Dirham",
+  //       AFN: "Afghan Afghani",
+  //       ALL: "Albanian Lek",
+  //       AMD: "Armenian Dram",
+  //       ANG: "Netherlands Antillean Guilder",
+  //       AOA: "Angolan Kwanza",
+  //       ARS: "Argentine Peso",
+  //       AUD: "Australian Dollar",
+  //       AWG: "Aruban Florin",
+  //       AZN: "Azerbaijani Manat",
+  //     },
+  //   });
+  // }, []);
+
   const createOptions = () => {
+    if (!currencyList || !currencyList.symbols) {
+      return; // Exit early if currencyList is undefined or symbols property is missing
+    }
     const newOptions = Object.entries(currencyList.symbols).map(
       ([code, name]) => (
-        <>
-          <option key={code} value={code}>
-            <ReactCountryFlag countryCode={code} />
-            {`${code} - ${name}`}
-          </option>
-        </>
+        <option key={code} value={code}>
+          <ReactCountryFlag countryCode={code} />
+          {`${code} - ${name}`}
+        </option>
       )
     );
     setOptions(newOptions);
-    setCurrencyFrom(currencyList[Object.keys(currencyList)[0]]);
-    setCurrencyTo(currencyList[Object.keys(currencyList)[1]]);
+    //Setting the first and second options on the converter form to the first and second currencies in the converter list
+    const symbolEntries = Object.entries(currencyList.symbols);
+    const [firstCurrencyKey, secondCurrencyKey] = symbolEntries
+      .slice(0, 2)
+      .map(([code]) => code);
+    setCurrencyFrom(firstCurrencyKey);
+    setCurrencyTo(secondCurrencyKey);
   };
 
   useEffect(() => {
@@ -77,10 +87,36 @@ const Converter = () => {
     if (currencyFrom === currencyTo) {
       alert("Please select different currencies for 'From' and 'To' fields.");
       return;
+    } else if (amount <= 0) {
+      alert("Please select an amount to convert that is greater than zero.");
+    } else {
+      console.log(
+        `Amount: ${amount}, CurrencyFrom: ${currencyFrom}, CurrencyTo: ${currencyTo}`
+      );
+      setLoading(true);
+      setSearched(true);
+      const options = {
+        method: "GET",
+        url: `https://api.apilayer.com/exchangerates_data/convert?to=${currencyTo}&from=${currencyFrom}&amount=${amount}`,
+        redirect: "follow",
+        headers: {
+          apikey: `${process.env.REACT_APP_API_KEY}`,
+        },
+      };
+
+      const fetchData = async () => {
+        try {
+          const response = await axios.request(options);
+          console.log(response.data);
+          setConversionData(response.data);
+          setLoading(false);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+      fetchData();
     }
-    console.log(
-      `Amount: ${amount}, CurrencyFrom: ${currencyFrom}, CurrencyTo: ${currencyTo}`
-    );
   }
 
   function onCurrencySwitch() {
@@ -128,6 +164,7 @@ const Converter = () => {
           </select>
         </div>
         <button
+          type="button"
           onClick={() => {
             onCurrencySwitch();
           }}
@@ -167,6 +204,30 @@ const Converter = () => {
           for our Converter. This is for informational purposes only.
         </p>
       </div>
+      {searched ? (
+        loading ? (
+          <div id="loading"></div>
+        ) : (
+          <div className="conversionContainer">
+            <p className="beforeAmount">
+              {conversionData.query.amount} {conversionData.query.from} is
+              worth:
+            </p>
+            <p className="conversionAmount">${conversionData.result}</p>
+            <p className="afterAmount">{conversionData.query.to}.</p>
+            <p className="conversionDate">
+              Conversion Date: {conversionData.date}
+            </p>
+            <p className="conversionRate">
+              {" "}
+              The rate from {conversionData.query.from} to{" "}
+              {conversionData.query.to} is {conversionData.info.rate}
+            </p>
+          </div>
+        )
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };
