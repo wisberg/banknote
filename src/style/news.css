@@ -1,7 +1,7 @@
 .pageHeader {
   text-align: center;
   color: white;
-  font-size: 30px;
+  font-size: 40px;
   font-weight: 700;
   margin-top: -15%;
   margin-bottom: 15%;
@@ -155,4 +155,42 @@
   right: -100px;
   max-width: 450px;
   z-index: -1;
+}
+
+/*****************************LAPTOP*********************/
+
+@media (max-width: 1024px) {
+  .searchBar {
+    width: 200px;
+  }
+  .searchButton {
+    padding: 10px 30px 10px 30px;
+    margin: 15px;
+    font-size: 20px;
+  }
+  .searchText {
+    font-size: 20px;
+    color: var(--blue);
+  }
+  .pageHeader {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: -20%;
+  }
+}
+
+/************************TABLET*********************/
+@media (max-width: 768px) {
+  .searchBar {
+    width: 150px;
+  }
+  .searchButton {
+    padding: 5px 20px 5px 20px;
+    margin: 15px;
+    font-size: 16px;
+  }
+  .searchText {
+    font-size: 20px;
+    color: var(--blue);
+  }
 }

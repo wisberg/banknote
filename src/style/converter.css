@@ -75,7 +75,7 @@
   width: 30px;
 }
 
-#submitButton {
+#submitButton1 {
   font-weight: 900;
   font-size: 15px;
   background-color: var(--blue);
@@ -83,16 +83,15 @@
   border: none;
   outline: none;
   border-radius: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  max-height: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
   transition: 0.3s;
+  max-height: 50px;
   cursor: pointer;
+  margin-top: 30px;
 }
 
-#submitButton:hover {
+#submitButton1:hover {
   background-color: var(--white);
   color: var(--blue);
   transition: 0.3s;
@@ -168,5 +167,53 @@
 @-webkit-keyframes spin {
   to {
     -webkit-transform: rotate(360deg);
+  }
+}
+
+/*****************************LAPTOP*********************/
+
+@media (max-width: 1024px) {
+  #submitButton1 {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+/************************TABLET*********************/
+@media (max-width: 768px) {
+  .converterContainer {
+    width: 90%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: 3%;
+    margin-right: 3%;
+    padding: 2%;
+    border-radius: 10px;
+  }
+
+  .converterForm {
+    display: flex;
+    flex-direction: column;
+    vertical-align: middle;
+    justify-self: center;
+  }
+  #submitButton1 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .switchButton {
+    margin-bottom: 10px;
+
+    margin-top: 20px;
+    margin-left: 50%;
+    margin-right: 50%;
   }
 }

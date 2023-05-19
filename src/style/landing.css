@@ -3,8 +3,13 @@
   display: flex;
   flex-direction: column;
   padding-top: 5%;
-  background-color: var(--blue);
   z-index: 0;
+  background: rgba(255, 89, 94, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(109, 152, 186, 1) 80%,
+    rgba(255, 89, 94, 0) 20%
+  );
 }
 
 #BankNote-Img-1 {
@@ -15,6 +20,7 @@
   width: 550px;
   margin-left: -250px;
   margin-top: -50px;
+  pointer-events: none;
 }
 #BankNote-Img-2 {
   position: absolute;
@@ -24,6 +30,7 @@
   max-width: 400px;
   margin-bottom: 100px;
   margin-right: -150px;
+  pointer-events: none;
 }
 
 .landing-headers-container {
@@ -42,6 +49,7 @@
   font-weight: 600;
   color: var(--white);
   text-align: center;
+  pointer-events: none;
 }
 
 .landing-tagline {
@@ -53,6 +61,7 @@
   padding-left: 100px;
   padding-right: 100px;
   color: white;
+  pointer-events: none;
 }
 
 .getStarted {
@@ -81,6 +90,26 @@
 
 .wavyTransition {
   background-color: white;
+  padding-bottom: 100px;
+}
+
+/*****************************LAPTOP*********************/
+
+@media (max-width: 1024px) {
+  #landing-header {
+    font-size: 55px;
+    padding-top: 50px;
+  }
+  #BankNote-Img-1 {
+    width: 40%;
+    margin-left: -150px;
+    margin-top: 50px;
+  }
+  #BankNote-Img-2 {
+    max-width: 35%;
+    margin-bottom: 200px;
+    margin-right: -50px;
+  }
 }
 
 /************************TABLET*********************/
@@ -91,12 +120,12 @@
     padding-right: 15%;
   }
   #BankNote-Img-1 {
-    width: 300px;
-    margin-left: -150px;
+    width: 40%;
+    margin-left: -100px;
     margin-top: 50px;
   }
   #BankNote-Img-2 {
-    max-width: 200px;
+    max-width: 35%;
     margin-bottom: 200px;
     margin-right: -50px;
   }
@@ -107,6 +136,8 @@
   }
   .landing-tagline {
     font-size: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
   }
   .wavyTransition {
     margin-top: 40px;
@@ -120,29 +151,30 @@
   }
 }
 
-/************************SMALL SCREEN*********************/
-@media (max-width: 1025px) {
+/************************MOBILE*********************/
+@media (max-width: 480px) {
   .landing-headers-container {
-    padding-left: 15%;
-    padding-right: 15%;
+    margin-top: -20px;
   }
   #BankNote-Img-1 {
-    width: 400px;
-    margin-left: -150px;
+    width: 40%;
+    margin-left: -100px;
     margin-top: 50px;
   }
   #BankNote-Img-2 {
-    max-width: 300px;
+    max-width: 35%;
     margin-bottom: 200px;
     margin-right: -50px;
   }
 
   #landing-header {
-    font-size: 45px;
+    font-size: 35px;
     padding-top: 50px;
   }
   .landing-tagline {
-    font-size: 20px;
+    font-size: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   .wavyTransition {
     margin-top: 40px;

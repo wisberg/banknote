@@ -14,6 +14,7 @@
   background: transparent;
   transition: 0.5s;
   background-color: var(--blue);
+  overflow: visible;
 }
 
 .scrolled {
@@ -101,4 +102,67 @@
   text-decoration: none !important;
   color: white;
   padding: 10px;
+}
+
+.hamburgerMenu {
+  display: none;
+}
+.hamburgerMenu li {
+  cursor: pointer;
+  padding-top: 10px;
+  list-style: none;
+  font-size: 20px;
+}
+.hamburgerMenu li {
+  cursor: pointer;
+  padding-top: 10px;
+  list-style: none;
+}
+
+.hamburgerIcon {
+  color: white;
+  width: 20px;
+  height: 20px;
+  size: 20px;
+  cursor: pointer;
+}
+
+.scrolledIcon {
+  color: black;
+}
+
+.hamburgerIconClose {
+  color: var(--blue);
+  width: 20px;
+  height: 20px;
+  size: 20px;
+  cursor: pointer;
+  float: right;
+}
+
+.menuExpanded {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: end;
+  z-index: 100;
+  background-color: white;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .hamburgerMenu {
+    display: contents;
+  }
+  .header-link-list {
+    display: none;
+  }
+  .getStartedHeader {
+    display: none;
+  }
 }
