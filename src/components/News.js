@@ -8,88 +8,87 @@ const News = () => {
   const [loading, setLoading] = useState(false);
   const [cancelToken, setCancelToken] = useState(null);
 
-  // useEffect(() => {
-  //   const source = axios.CancelToken.source();
-  //   setCancelToken(source);
-
-  //   const fetchData = async () => {
-  //     setLoading(true);
-  //     setArticles([]);
-
-  //     try {
-  //       const response = await axios.get(
-  //         `https://newsapi.org/v2/everything?q=${query}&pageSize=12`,
-  //         {
-  //           headers: {
-  //             "X-Api-Key": `${process.env.REACT_APP_NEWS_API_KEY}`,
-  //           },
-  //           cancelToken: source.token,
-  //         }
-  //       );
-
-  //       console.log(response.data);
-  //       setArticles(response.data.articles);
-  //     } catch (error) {
-  //       if (axios.isCancel(error)) {
-  //         console.log("Request canceled:", error.message);
-  //       } else {
-  //         console.error(error);
-  //       }
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchData();
-  //   return () => {
-  //     source.cancel("Request canceled: Component unmounted");
-  //   };
-  // }, [query]);
-
   useEffect(() => {
-    setArticles([
-      {
-        author: "https://www.facebook.com/bbcnews",
-        content:
-          "After spending 10 years as a Buddhist nun in Myanmar, Coral Sunone realised that she needed some fashion help when she returned to the outside world.\r\nBut with money tight, getting assistance from a … [+5562 chars]",
-        description:
-          'So-called "time-banking" schemes are letting people get paid in time credits for the work they do.',
-        publishedAt: "2023-05-01T00:41:46Z",
-        source: { id: "bbc-news", name: "BBC News" },
-        title: "The people turning time into a currency",
-        url: "https://www.bbc.co.uk/news/business-65397192",
-        urlToImage:
-          "https://ichef.bbci.co.uk/news/1024/branded_news/AF47/production/_129517844_coralnew4.jpg",
-      },
-      {
-        author: "https://www.facebook.com/bbcnews",
-        content:
-          "After spending 10 years as a Buddhist nun in Myanmar, Coral Sunone realised that she needed some fashion help when she returned to the outside world.\r\nBut with money tight, getting assistance from a … [+5562 chars]",
-        description:
-          'So-called "time-banking" schemes are letting people get paid in time credits for the work they do.',
-        publishedAt: "2023-05-01T00:41:46Z",
-        source: { id: "bbc-news", name: "BBC News" },
-        title: "The people turning time into a currency",
-        url: "https://www.bbc.co.uk/news/business-65397192",
-        urlToImage:
-          "https://ichef.bbci.co.uk/news/1024/branded_news/AF47/production/_129517844_coralnew4.jpg",
-      },
-      {
-        author: "https://www.facebook.com/bbcnews",
-        content:
-          "After spending 10 years as a Buddhist nun in Myanmar, Coral Sunone realised that she needed some fashion help when she returned to the outside world.\r\nBut with money tight, getting assistance from a … [+5562 chars]",
-        description:
-          'So-called "time-banking" schemes are letting people get paid in time credits for the work they do.',
-        publishedAt: "2023-05-01T00:41:46Z",
-        source: { id: "bbc-news", name: "BBC News" },
-        title: "The people turning time into a currency",
-        url: "https://www.bbc.co.uk/news/business-65397192",
-        urlToImage:
-          "https://ichef.bbci.co.uk/news/1024/branded_news/AF47/production/_129517844_coralnew4.jpg",
-      },
-    ]);
-    console.log(query);
+    const source = axios.CancelToken.source();
+    setCancelToken(source);
+
+    const fetchData = async () => {
+      setLoading(true);
+      setArticles([]);
+
+      try {
+        const response = await axios.get(
+          `https://newsapi.org/v2/everything?q=${query}&pageSize=12`,
+          {
+            headers: {
+              "X-Api-Key": `${process.env.REACT_APP_NEWS_API_KEY}`,
+            },
+            cancelToken: source.token,
+          }
+        );
+
+        console.log(response.data);
+        setArticles(response.data.articles);
+      } catch (error) {
+        if (axios.isCancel(error)) {
+          console.log("Request canceled:", error.message);
+        } else {
+          console.error(error);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+    return () => {
+      source.cancel("Request canceled: Component unmounted");
+    };
   }, [query]);
+
+  // useEffect(() => {
+  //   setArticles([
+  //     {
+  //       author: "https://www.facebook.com/bbcnews",
+  //       content:
+  //         "After spending 10 years as a Buddhist nun in Myanmar, Coral Sunone realised that she needed some fashion help when she returned to the outside world.\r\nBut with money tight, getting assistance from a … [+5562 chars]",
+  //       description:
+  //         'So-called "time-banking" schemes are letting people get paid in time credits for the work they do.',
+  //       publishedAt: "2023-05-01T00:41:46Z",
+  //       source: { id: "bbc-news", name: "BBC News" },
+  //       title: "The people turning time into a currency",
+  //       url: "https://www.bbc.co.uk/news/business-65397192",
+  //       urlToImage:
+  //         "https://ichef.bbci.co.uk/news/1024/branded_news/AF47/production/_129517844_coralnew4.jpg",
+  //     },
+  //     {
+  //       author: "https://www.facebook.com/bbcnews",
+  //       content:
+  //         "After spending 10 years as a Buddhist nun in Myanmar, Coral Sunone realised that she needed some fashion help when she returned to the outside world.\r\nBut with money tight, getting assistance from a … [+5562 chars]",
+  //       description:
+  //         'So-called "time-banking" schemes are letting people get paid in time credits for the work they do.',
+  //       publishedAt: "2023-05-01T00:41:46Z",
+  //       source: { id: "bbc-news", name: "BBC News" },
+  //       title: "The people turning time into a currency",
+  //       url: "https://www.bbc.co.uk/news/business-65397192",
+  //       urlToImage:
+  //         "https://ichef.bbci.co.uk/news/1024/branded_news/AF47/production/_129517844_coralnew4.jpg",
+  //     },
+  //     {
+  //       author: "https://www.facebook.com/bbcnews",
+  //       content:
+  //         "After spending 10 years as a Buddhist nun in Myanmar, Coral Sunone realised that she needed some fashion help when she returned to the outside world.\r\nBut with money tight, getting assistance from a … [+5562 chars]",
+  //       description:
+  //         'So-called "time-banking" schemes are letting people get paid in time credits for the work they do.',
+  //       publishedAt: "2023-05-01T00:41:46Z",
+  //       source: { id: "bbc-news", name: "BBC News" },
+  //       title: "The people turning time into a currency",
+  //       url: "https://www.bbc.co.uk/news/business-65397192",
+  //       urlToImage:
+  //         "https://ichef.bbci.co.uk/news/1024/branded_news/AF47/production/_129517844_coralnew4.jpg",
+  //     },
+  //   ]);
+  // }, [query]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
