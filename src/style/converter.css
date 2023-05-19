@@ -27,7 +27,7 @@
 .formRow {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   margin-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;

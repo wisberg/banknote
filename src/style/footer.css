@@ -41,7 +41,7 @@
   vertical-align: middle;
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: flex-end;
 }
 
 .credits {

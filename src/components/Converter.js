@@ -14,46 +14,46 @@ const Converter = () => {
   const [loading, setLoading] = useState(false);
   const [searched, setSearched] = useState(false);
 
-  useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "https://api.apilayer.com/exchangerates_data/symbols",
-      redirect: "follow",
-      headers: {
-        apikey: `${process.env.REACT_APP_API_KEY}`,
-      },
-    };
+  // useEffect(() => {
+  //   const options = {
+  //     method: "GET",
+  //     url: "https://api.apilayer.com/exchangerates_data/symbols",
+  //     redirect: "follow",
+  //     headers: {
+  //       apikey: `${process.env.REACT_APP_API_KEY}`,
+  //     },
+  //   };
 
-    const fetchData = async () => {
-      try {
-        const response = await axios.request(options);
-        console.log(response.data);
-        setCurrencyList(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.request(options);
+  //       console.log(response.data);
+  //       setCurrencyList(response.data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   //Dummy Array
-  // useEffect(() => {
-  //   setCurrencyList({
-  //     symbols: {
-  //       AED: "United Arab Emirates Dirham",
-  //       AFN: "Afghan Afghani",
-  //       ALL: "Albanian Lek",
-  //       AMD: "Armenian Dram",
-  //       ANG: "Netherlands Antillean Guilder",
-  //       AOA: "Angolan Kwanza",
-  //       ARS: "Argentine Peso",
-  //       AUD: "Australian Dollar",
-  //       AWG: "Aruban Florin",
-  //       AZN: "Azerbaijani Manat",
-  //     },
-  //   });
-  // }, []);
+  useEffect(() => {
+    setCurrencyList({
+      symbols: {
+        AED: "United Arab Emirates Dirham",
+        AFN: "Afghan Afghani",
+        ALL: "Albanian Lek",
+        AMD: "Armenian Dram",
+        ANG: "Netherlands Antillean Guilder",
+        AOA: "Angolan Kwanza",
+        ARS: "Argentine Peso",
+        AUD: "Australian Dollar",
+        AWG: "Aruban Florin",
+        AZN: "Azerbaijani Manat",
+      },
+    });
+  }, []);
 
   const createOptions = () => {
     if (!currencyList || !currencyList.symbols) {
@@ -79,7 +79,7 @@ const Converter = () => {
 
   useEffect(() => {
     createOptions();
-  }, [currencyList]);
+  });
 
   //On Currency Converter Form Submit
   function onFormSubmit(e) {

@@ -83,7 +83,9 @@ const Header = () => {
 
   return (
     <header className="header">
-      <h1 className="header-logo">BankNote</h1>
+      <NavLink to="/" onClick={handleNavLinkClick} className="headerLogoLink">
+        <h1 className="header-logo">BankNote</h1>
+      </NavLink>
       <div className="links">
         <div className="hamburgerMenu">
           {menuOpen ? (

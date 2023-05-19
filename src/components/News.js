@@ -5,15 +5,9 @@ import "../style/news.css";
 const News = () => {
   const [articles, setArticles] = useState([]);
   const [query, setQuery] = useState("currency");
-  const [loading, setLoading] = useState(false);
-  const [cancelToken, setCancelToken] = useState(null);
 
   useEffect(() => {
-    const source = axios.CancelToken.source();
-    setCancelToken(source);
-
     const fetchData = async () => {
-      setLoading(true);
       setArticles([]);
 
       try {
@@ -23,7 +17,6 @@ const News = () => {
             headers: {
               "X-Api-Key": `${process.env.REACT_APP_NEWS_API_KEY}`,
             },
-            cancelToken: source.token,
           }
         );
 
@@ -35,15 +28,10 @@ const News = () => {
         } else {
           console.error(error);
         }
-      } finally {
-        setLoading(false);
       }
     };
 
     fetchData();
-    return () => {
-      source.cancel("Request canceled: Component unmounted");
-    };
   }, [query]);
 
   // useEffect(() => {
@@ -154,7 +142,11 @@ const News = () => {
           articles.map((article) =>
             article.urlToImage ? (
               <div className="articleContainer" key={article.url}>
-                <img className="articleImg" src={article.urlToImage} />
+                <img
+                  alt="News article"
+                  className="articleImg"
+                  src={article.urlToImage}
+                />
                 <h1 className="articleTitle">{article.title}</h1>
                 <h2 className="articleAuthor">By: {article.author}</h2>
                 <h3 className="articleDesc">{article.description}</h3>
@@ -162,7 +154,7 @@ const News = () => {
                   className="articleLink"
                   href={article.url}
                   target="_blank"
-                  rel="nofollow"
+                  rel="noreferrer"
                 >
                   Read More
                 </a>
@@ -177,11 +169,11 @@ const News = () => {
               <div className="newsContainer">
                 {[1, 2, 3].map((index) => (
                   <div className="articleContainer" key={index}>
-                    <img className="articleImg loader" />
-                    <h1 className="articleTitle loader loader-text-title"></h1>
-                    <h2 className="articleAuthor loader loader-text"></h2>
-                    <h3 className="articleDesc loader loader-text"></h3>
-                    <a className="articleLink loader"></a>
+                    <div className="articleImg loader"></div>
+                    <div className="articleTitle loader loader-text-title"></div>
+                    <div className="articleAuthor loader loader-text"></div>
+                    <div className="articleDesc loader loader-text"></div>
+                    <div className="articleLink loader"></div>
                   </div>
                 ))}
               </div>
