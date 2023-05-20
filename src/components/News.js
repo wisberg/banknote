@@ -6,22 +6,44 @@ const News = () => {
   const [articles, setArticles] = useState([]);
   const [query, setQuery] = useState("currency");
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setArticles([]);
+
+  //     try {
+  //       const response = await axios.get(
+  //         `https://newsapi.org/v2/everything?q=${query}&pageSize=12`,
+  //         {
+  //           headers: {
+  //             "X-Api-Key": `${process.env.REACT_APP_NEWS_API_KEY}`,
+  //           },
+  //         }
+  //       );
+
+  //       console.log(response.data);
+  //       setArticles(response.data.articles);
+  //     } catch (error) {
+  //       if (axios.isCancel(error)) {
+  //         console.log("Request canceled:", error.message);
+  //       } else {
+  //         console.error(error);
+  //       }
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [query]);
+
   useEffect(() => {
     const fetchData = async () => {
       setArticles([]);
 
       try {
         const response = await axios.get(
-          `https://newsapi.org/v2/everything?q=${query}&pageSize=12`,
-          {
-            headers: {
-              "X-Api-Key": `${process.env.REACT_APP_NEWS_API_KEY}`,
-            },
-          }
+          `https://api.worldnewsapi.com/search-news?api-key=${process.env.REACT_APP_WORLD_NEWS_API_KEY}&text=${query}&number=12`
         );
-
-        console.log(response.data);
-        setArticles(response.data.articles);
+        setArticles(response.data.news);
+        console.log(articles);
       } catch (error) {
         if (axios.isCancel(error)) {
           console.log("Request canceled:", error.message);
@@ -140,16 +162,16 @@ const News = () => {
       <div className="newsContainer">
         {articles.length > 0 ? (
           articles.map((article) =>
-            article.urlToImage ? (
+            article.image ? (
               <div className="articleContainer" key={article.url}>
                 <img
                   alt="News article"
                   className="articleImg"
-                  src={article.urlToImage}
+                  src={article.image}
                 />
                 <h1 className="articleTitle">{article.title}</h1>
                 <h2 className="articleAuthor">By: {article.author}</h2>
-                <h3 className="articleDesc">{article.description}</h3>
+                <h3 className="articleDesc">{article.text}</h3>
                 <a
                   className="articleLink"
                   href={article.url}

@@ -57,29 +57,32 @@ const Converter = () => {
 
   const createOptions = () => {
     if (!currencyList || !currencyList.symbols) {
-      return; // Exit early if currencyList is undefined or symbols property is missing
+      return;
     }
-    const newOptions = Object.entries(currencyList.symbols).map(
-      ([code, name]) => (
-        <option key={code} value={code}>
-          <ReactCountryFlag countryCode={code} />
-          {`${code} - ${name}`}
-        </option>
-      )
-    );
-    setOptions(newOptions);
-    //Setting the first and second options on the converter form to the first and second currencies in the converter list
-    const symbolEntries = Object.entries(currencyList.symbols);
-    const [firstCurrencyKey, secondCurrencyKey] = symbolEntries
-      .slice(0, 2)
-      .map(([code]) => code);
-    setCurrencyFrom(firstCurrencyKey);
-    setCurrencyTo(secondCurrencyKey);
+
+    // Check if options already exist
+    if (options.length === 0) {
+      const newOptions = Object.entries(currencyList.symbols).map(
+        ([code, name]) => (
+          <option key={code} value={code}>
+            <ReactCountryFlag countryCode={code} />
+            {`${code} - ${name}`}
+          </option>
+        )
+      );
+      setOptions(newOptions);
+      const symbolEntries = Object.entries(currencyList.symbols);
+      const [firstCurrencyKey, secondCurrencyKey] = symbolEntries
+        .slice(0, 2)
+        .map(([code]) => code);
+      setCurrencyFrom(firstCurrencyKey);
+      setCurrencyTo(secondCurrencyKey);
+    }
   };
 
   useEffect(() => {
     createOptions();
-  });
+  }, [currencyList]);
 
   //On Currency Converter Form Submit
   function onFormSubmit(e) {
